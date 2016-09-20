@@ -13,6 +13,8 @@
 
 <script>
 
+
+
 function function_voice(){
 		if(window.hasOwnProperty('webkitSpeechRecognition')) {
 			//hasOwnProperty là phương thức javascript để kiểm tra đối tượng đó có tồn tại thuộc tính đó hay không//
@@ -22,8 +24,12 @@ function function_voice(){
 			// và chuyển nó thành dạng văn bản
 			recognition.continuous = false;
 			recognition.interimResults = false;
-			recognition.lang = 'en-US';///language
+			// interimResult đầu tiên sẽ là  sai  có nghĩa kết quả trả về của bộ nhận dạng là cuối cùng và sẽ không thay đổi
+			//có nghĩa kết quả sẽ được trả về sau khi nhận dạng đã kết thúc
+			recognition.lang = 'en-US';
+			//Thiết lập ngôn ngữ
 			recognition.start();
+			//bắt đầu
 			recognition.onresult = function(e) {
 				document.getElementById('search_box').value = e.results[0][0].transcript;
 				recognition.stop();
